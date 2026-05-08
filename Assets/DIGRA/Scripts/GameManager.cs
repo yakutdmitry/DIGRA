@@ -6,9 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public int maxNumberOfGhosts;
     public float spawnCooldown;
+    public GameObject ghostPrefab;
+    
     
     [SerializeField] private List<Transform> Anchors;
-
+    
     private float timer = 0;
     private int spawned= 0;
     private bool canSpawn = true;
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
         {
             spawnedGhostsQuantity++;
             spawned = spawnedGhostsQuantity;
+            Instantiate(ghostPrefab, Anchors[Random.Range(0, Anchors.Count)]);
+            timer = 0f;
         }
         else
         {

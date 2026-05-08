@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -43,10 +45,14 @@ public class GameManager : MonoBehaviour
         canSpawn = false;
         if (spawnedGhostsQuantity < Anchors.Count)
         {
+            int index = Random.Range(0, Anchors.Count);
             spawnedGhostsQuantity++;
             spawned = spawnedGhostsQuantity;
-            Instantiate(ghostPrefab, Anchors[Random.Range(0, Anchors.Count)]);
-            timer = 0f;
+
+            Instantiate(ghostPrefab, Anchors[index]);
+            SpawnGhostWait(15);
+            
+            
         }
         else
         {
@@ -59,5 +65,12 @@ public class GameManager : MonoBehaviour
         Anchors.Remove(ghost.transform);
         Destroy(ghost);
         canSpawn = true;
+    }
+
+    IEnumerator SpawnGhostWait(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Instantiate(ghostPrefab, Anchors[Random.Range(0, Anchors.Count)]); 
+        timer = 0f;
     }
 }

@@ -3,10 +3,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Camera camera;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float maxRayDistance;
+
+    private GameManager gameManager;
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,9 +26,10 @@ public class PlayerController : MonoBehaviour
         
         
         
-        if (Physics.Raycast(r,out RaycastHit hit, 100f))
+        if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance) && hit.collider.tag == "Ghost")
         { 
             Debug.Log(hit.collider.name);
+            gameManager.DestroyGhost(hit.collider.gameObject);
         }
         Debug.DrawRay(r.origin, r.direction * 100, Color.blueViolet, 10f);
     }

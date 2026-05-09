@@ -73,9 +73,10 @@ public class GameManager : MonoBehaviour
 
     public void DestroyGhost(GameObject ghost)
     {
-        Anchors.Remove(ghost.transform);
+        Anchors.Remove(Anchors[index]);
         Destroy(ghost);
         canSpawn = true;
+        canSpawnProps = true;
     }
 
 

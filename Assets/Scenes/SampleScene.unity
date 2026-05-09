@@ -4405,7 +4405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxNumberOfGhosts: 5
-  spawnCooldown: 10
+  spawnCooldown: 15
   ghostPrefab: {fileID: 3320190526780094610, guid: 4df2805ba93662f41873a3d822168376, type: 3}
   propsPrefab: {fileID: 3349616881734752411, guid: 08be38260654e284ea4d41d16acc6be6, type: 3}
   Anchors: []
@@ -29466,6 +29466,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4774468736449725044, guid: 204acc76423fe584eb28ba7e66bfd359, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8215066566523660784, guid: 204acc76423fe584eb28ba7e66bfd359, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.44

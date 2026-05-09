@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= spawnCooldown)
             {
-                SpawnGhost(spawned, index);
+                SpawnHint(spawned, index);
             }
-            if (timer >= (spawnCooldown / 2) && canSpawnProps)
+            if (timer >= (spawnCooldown / 1.5) && canSpawnProps)
             {
                 Debug.Log("HINTING");
-                hint();
+                SpawnGhost();
             }
         }
         
@@ -53,17 +53,16 @@ public class GameManager : MonoBehaviour
         return GameObject.FindGameObjectsWithTag("Anchor").OrderBy(x => Random.value).Take(GhostsQuantity).Select(x => x.transform).ToList();
     }
 
-    private void SpawnGhost(int spawnedGhostsQuantity, int newIndex)
+    private void SpawnHint(int spawnedGhostsQuantity, int newIndex)
     {
         canSpawn = false;
         if (spawnedGhostsQuantity < Anchors.Count)
         {
             
-            spawnedGhostsQuantity++;
-            spawned = spawnedGhostsQuantity;
-
-            Instantiate(ghostPrefab, (Anchors[newIndex]).position, (Anchors[newIndex]).rotation);
-
+            
+            
+            Instantiate(propsPrefab, (Anchors[newIndex]).position, (Anchors[newIndex]).rotation);
+            Anchors[index].GetComponent<AudioSource>().Play();
             timer = 0;
             Debug.Log(Anchors[newIndex].name);
         }
@@ -83,12 +82,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void hint()
+    private void SpawnGhost()
     {
+        
+        
         index = Random.Range(0, Anchors.Count);
         Debug.Log(Anchors[index].name);
-        Anchors[index].GetComponent<AudioSource>().Play();
-        Instantiate(propsPrefab, Anchors[index].position, Anchors[index].rotation);
+        
+        Instantiate(ghostPrefab, Anchors[index].position, Anchors[index].rotation);
         canSpawnProps = false;
     }
 }

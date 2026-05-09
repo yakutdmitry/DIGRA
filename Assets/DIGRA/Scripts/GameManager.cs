@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int maxNumberOfGhosts;
     public float spawnCooldown;
     public GameObject ghostPrefab;
+    public GameObject propsPrefab;
     
     
     [SerializeField] private List<Transform> Anchors;
@@ -16,6 +18,9 @@ public class GameManager : MonoBehaviour
     private float timer = 0;
     private int spawned= 0;
     private bool canSpawn = true;
+    private bool canSpawnProps = true;
+    private int index;
+
     void Start()
     {
         Anchors = FindSpawnPositions(Random.Range(3, maxNumberOfGhosts));
@@ -30,7 +35,12 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= spawnCooldown)
             {
-                SpawnGhost(spawned);
+                SpawnGhost(spawned, index);
+            }
+            if (timer >= (spawnCooldown / 2) && canSpawnProps)
+            {
+                Debug.Log("HINTING");
+                hint();
             }
         }
     }
@@ -40,19 +50,19 @@ public class GameManager : MonoBehaviour
         return GameObject.FindGameObjectsWithTag("Anchor").OrderBy(x => Random.value).Take(GhostsQuantity).Select(x => x.transform).ToList();
     }
 
-    private void SpawnGhost(int spawnedGhostsQuantity)
+    private void SpawnGhost(int spawnedGhostsQuantity, int newIndex)
     {
         canSpawn = false;
         if (spawnedGhostsQuantity < Anchors.Count)
         {
-            int index = Random.Range(0, Anchors.Count);
+            
             spawnedGhostsQuantity++;
             spawned = spawnedGhostsQuantity;
 
-            Instantiate(ghostPrefab, (Anchors[index]).localPosition, (Anchors[index]).rotation);
-            SpawnGhostWait(15);
+            Instantiate(ghostPrefab, (Anchors[newIndex]).position, (Anchors[newIndex]).rotation);
 
             timer = 0;
+            Debug.Log(Anchors[newIndex].name);
         }
         else
         {
@@ -68,10 +78,13 @@ public class GameManager : MonoBehaviour
         canSpawn = true;
     }
 
-    IEnumerator SpawnGhostWait(float time)
+
+    private void hint()
     {
-        yield return new WaitForSeconds(time);
-        Instantiate(ghostPrefab, Anchors[Random.Range(0, Anchors.Count)]); 
-        timer = 0f;
+        index = Random.Range(0, Anchors.Count);
+        Debug.Log(Anchors[index].name);
+        Anchors[index].GetComponent<AudioSource>().Play();
+        Instantiate(propsPrefab, Anchors[index].position, Anchors[index].rotation);
+        canSpawnProps = false;
     }
 }

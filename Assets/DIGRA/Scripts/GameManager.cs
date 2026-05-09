@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     private bool canSpawn = true;
     void Start()
     {
-        Anchors = FindSpawnPositions(Random.Range(1, maxNumberOfGhosts));
-        SpawnGhost(spawned);
+        Anchors = FindSpawnPositions(Random.Range(3, maxNumberOfGhosts));
+        // SpawnGhost(spawned);
     }
 
     // Update is called once per frame
@@ -49,13 +49,14 @@ public class GameManager : MonoBehaviour
             spawnedGhostsQuantity++;
             spawned = spawnedGhostsQuantity;
 
-            Instantiate(ghostPrefab, Anchors[index]);
+            Instantiate(ghostPrefab, (Anchors[index]).localPosition, (Anchors[index]).rotation);
             SpawnGhostWait(15);
-            
-            
+
+            timer = 0;
         }
         else
         {
+            Debug.Log("End Game!");
             Application.Quit();
         }
     }

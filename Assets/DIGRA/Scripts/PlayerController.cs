@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Camera camera;
-    public float maxRayDistance;
+    public AudioSource shot;
     public GameObject device;
     public float deviceBattery = 10;
+    public float maxRayDistance;
     
     
     private Animator _animator;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     bool deviceActive = true;
     float deviceTimer;
-    void Start()
+    void Awake()
     {
         _animator = device.GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -59,15 +60,25 @@ public class PlayerController : MonoBehaviour
     
     public void Fire()
     {
-        Ray r = camera.ViewportPointToRay(new Vector3(0.5f, .5f, 0f));
+        if (deviceActive)
+        {
+            shot.Play();
+            Ray r = camera.ViewportPointToRay(new Vector3(0.5f, .5f, 0f));
         
         
         
-        if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance) && hit.collider.tag == "Ghost")
-        { 
-            Debug.Log(hit.collider.name);
-            gameManager.DestroyGhost(hit.collider.gameObject);
+            if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance) && hit.collider.tag == "Ghost")
+            { 
+                Debug.Log(hit.collider.name);
+                gameManager.DestroyGhost(hit.collider.gameObject);
+            }
+
+            if (Physics.Raycast(r, out RaycastHit hitInfo, maxRayDistance))
+            {
+                Debug.Log(hitInfo.collider.name);
+            }
+            Debug.DrawRay(r.origin, r.direction * 100, Color.blueViolet, 2);
         }
-        Debug.DrawRay(r.origin, r.direction * 100, Color.blueViolet, 10f);
+        
     }
 }

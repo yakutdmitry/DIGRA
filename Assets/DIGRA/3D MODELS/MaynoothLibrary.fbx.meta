@@ -7,28 +7,83 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Ceeling
+    second: {fileID: 2100000, guid: b2737bc0b5e630342ab5fbd986fb41b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Emission
     second: {fileID: 2100000, guid: 0b5bea5dac954c7438a0a2e9ab770206, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 03e4530875cabb441bfd11a15d19e9a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: b6dd275b2cdde18429f4976e8363dfa6, type: 2}
+    second: {fileID: 2100000, guid: 6960e650320345b49b41d733f00fb396, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: e84c5c59a41d0584a9155eca372cbb50, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: MaynoothLibrary_DefaultMaterial_AlbedoTransparency
-    second: {fileID: 2800000, guid: 36029e18fcc0bdd4e97d90418fe86204, type: 3}
+      name: Ceeling_Ceeling_AlbedoTransparency
+    second: {fileID: 2800000, guid: 0185c0d01b2a72047a4b8081543f32b9, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: MaynoothLibrary_DefaultMaterial_MetallicSmoothness
-    second: {fileID: 2800000, guid: 4a39c1f02075f364d963ef04714408b8, type: 3}
+      name: Ceeling_Ceeling_MetallicSmoothness
+    second: {fileID: 2800000, guid: fc6427d2a4932b8418fa7475eef8122a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: MaynoothLibrary_DefaultMaterial_Normal
-    second: {fileID: 2800000, guid: 0b11e611ddc165147af527f70d272c3b, type: 3}
+      name: Ceeling_Ceeling_Normal
+    second: {fileID: 2800000, guid: 718c33fc171f774429334fde3e879781, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floors_Floor_AlbedoTransparency
+    second: {fileID: 2800000, guid: 1c907c1d6a3c33f43a26ed2da6a7213a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floors_Floor_MetallicSmoothness
+    second: {fileID: 2800000, guid: fda5a63024b2f814d878bbfcc27a4d26, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MaynoothLibrary_Wall_AlbedoTransparency
+    second: {fileID: 2800000, guid: e8dab2bb77d0f3f4085b6bad7d891451, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MaynoothLibrary_Wall_MetallicSmoothness
+    second: {fileID: 2800000, guid: 208e4206867a1cf4c83185853ba0918b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MaynoothLibrary_Wall_Normal
+    second: {fileID: 2800000, guid: ab1a705889d16eb4ca46deba1b83cb66, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Normal
+    second: {fileID: 2800000, guid: cd60e162c74129d418134c54725e0541, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Window_Material_AlbedoTransparency
+    second: {fileID: 2800000, guid: eee7be22cb8a8ee4fab241b8177ff7a4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Window_Material_MetallicSmoothness
+    second: {fileID: 2800000, guid: dfd5a3fa2ccd9a446ba4097b6c951ec6, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,7 +115,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1

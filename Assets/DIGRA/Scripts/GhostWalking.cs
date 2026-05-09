@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Wanderer : MonoBehaviour
+public class GhostWalking : MonoBehaviour
 {
     private NavMeshAgent agent;
     public float wanderRadius = 10f;

@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (canSpawn)
         {
             timer += Time.deltaTime;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
                 hint();
             }
         }
+        
+        
     }
 
     private List<Transform> FindSpawnPositions(int GhostsQuantity)

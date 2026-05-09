@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     bool deviceActive = true;
     float deviceTimer;
+    private bool canShoot;
+    private float shootDelay = 2.5f;
+    private float shootTimer = 0;
     void Awake()
     {
         _animator = device.GetComponent<Animator>();
@@ -25,10 +28,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetMouseButton(0))
+                
+        if (Input.GetMouseButton(0) && canShoot)
         {
             Fire();
+        }
+
+        if (!canShoot)
+        {
+            shootTimer += Time.deltaTime;
+            if (shootTimer >= shootDelay)
+            {
+                canShoot = true;
+                shootTimer = 0;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -62,6 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         if (deviceActive)
         {
+            canShoot = false;
             shot.Play();
             Ray r = camera.ViewportPointToRay(new Vector3(0.5f, .5f, 0f));
         

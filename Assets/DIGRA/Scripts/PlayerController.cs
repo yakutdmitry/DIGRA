@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,12 +9,13 @@ public class PlayerController : MonoBehaviour
     public Camera camera;
     public AudioSource shot;
     public GameObject device;
+    public TextMeshProUGUI Battery;
+    
     public float deviceBattery = 10;
     public float maxRayDistance;
     
     
     private Animator _animator;
-
     private GameManager gameManager;
     bool deviceActive = true;
     float deviceTimer;
@@ -60,12 +63,14 @@ public class PlayerController : MonoBehaviour
         
         if (deviceActive == true)
         {
+            var battery = (1 - (deviceTimer / deviceBattery)) * 100;
             deviceTimer += Time.deltaTime;
+            Battery.text = "Battery: " + MathF.Floor(battery) + "%";
         }
 
         if (deviceTimer >= deviceBattery)
         {
-            Debug.Log("End Game");
+            Application.Quit();
         }
     }
     

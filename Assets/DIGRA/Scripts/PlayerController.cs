@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     
     private Animator _animator;
     private GameManager gameManager;
-    bool deviceActive = true;
+    bool deviceActive = false;
     float deviceTimer;
     private bool canShoot;
     private float shootDelay = 2.5f;
@@ -52,11 +52,13 @@ public class PlayerController : MonoBehaviour
         {
             if (deviceActive == false)
             {
+                device.SetActive(true);
                 _animator.SetTrigger("Up");
                 deviceActive = true;
             }
             else
             {
+                
                 _animator.SetTrigger("Back");
                 deviceActive = false;
             }

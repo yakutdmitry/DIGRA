@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public int maxNumberOfGhosts;
     public float spawnCooldown;
+    public float batteryPerGhost;
     public GameObject ghostPrefab;
     public GameObject propsPrefab;
     public ParticleSystem particles;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         ghostsQuantity = Random.Range(3, maxNumberOfGhosts);
-        player.deviceBattery = 30f * ghostsQuantity;
+        player.deviceBattery = batteryPerGhost * ghostsQuantity;
         Anchors = FindSpawnPositions(Random.Range(3, maxNumberOfGhosts));
         // SpawnGhost(spawned);
     }

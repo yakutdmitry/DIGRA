@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
         if (deviceActive)
         {
             canShoot = false;
+            deviceTimer +=  (deviceBattery / 100) * 5f;
             shot.Play();
             Ray r = camera.ViewportPointToRay(new Vector3(0.5f, .5f, 0f));
 

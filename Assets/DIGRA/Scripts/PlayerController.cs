@@ -94,10 +94,10 @@ public class PlayerController : MonoBehaviour
 
             int mask = 1 << 3;
         
-            if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance, mask) && hit.collider.tag == "Ghost")
+            if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance, mask) && hit.transform.tag == "Ghost")
             { 
-                Debug.Log(hit.collider.name);
-                gameManager.DestroyGhost(hit.collider.gameObject);
+                Debug.Log(hit.transform.name);
+                gameManager.DestroyGhost(hit.transform.gameObject);
             }
 
             if (Physics.Raycast(r, out RaycastHit hitInfo, maxRayDistance))

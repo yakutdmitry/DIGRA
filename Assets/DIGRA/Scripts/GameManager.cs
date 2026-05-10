@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,21 +62,12 @@ public class GameManager : MonoBehaviour
 
     private void SpawnHint(int spawnedGhostsQuantity, int newIndex)
     {
-        canSpawn = false;
-        if (spawnedGhostsQuantity < Anchors.Count)
-        {
-            
-            
-            
+        canSpawnProps = false;
             Instantiate(propsPrefab, (Anchors[newIndex]).position, (Anchors[newIndex]).rotation);
             Anchors[index].GetComponent<AudioSource>().Play();
             timer = 0;
             Debug.Log(Anchors[newIndex].name);
-        }
-        else
-        {
-            Debug.Log("End Game!");
-        }
+            
     }
 
     public void DestroyGhost(GameObject ghost)
@@ -85,25 +77,22 @@ public class GameManager : MonoBehaviour
         Destroy(ghost);
         canSpawn = true;
         canSpawnProps = true;
+
+        if (spawned == ghostsQuantity)
+        {
+            SceneManager.LoadScene(sceneBuildIndex: 2);
+        }
     }
 
 
     private void SpawnGhost()
     {
-        if (spawned == ghostsQuantity)
-        {
-            Application.Quit();
-        }
-        else
-        {
+        
             index = Random.Range(0, Anchors.Count);
-            Debug.Log(Anchors[index].name);
+            // Debug.Log(Anchors[index].name);
         
             Instantiate(ghostPrefab, Anchors[index].position, Anchors[index].rotation);
             spawned++;
-            canSpawnProps = false;
-        }
-        
-        
+            canSpawn = false;
     }
 }

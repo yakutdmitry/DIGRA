@@ -66,6 +66,10 @@ public class PlayerController : MonoBehaviour
             var battery = (1 - (deviceTimer / deviceBattery)) * 100;
             deviceTimer += Time.deltaTime;
             Battery.text = "Battery: " + MathF.Floor(battery) + "%";
+            if (battery <= 20)
+            {
+                Battery.color = Color.red;
+            }
         }
 
         if (deviceTimer >= deviceBattery)

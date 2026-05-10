@@ -14,15 +14,20 @@ public class GameManager : MonoBehaviour
     
     
     [SerializeField] private List<Transform> Anchors;
+    [SerializeField] private PlayerController player;
     
     private float timer = 0;
     private int spawned= 0;
     private bool canSpawn = true;
     private bool canSpawnProps = true;
     private int index;
+    private int ghostsQuantity;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        ghostsQuantity = Random.Range(3, maxNumberOfGhosts);
+        player.deviceBattery = 30f * ghostsQuantity;
         Anchors = FindSpawnPositions(Random.Range(3, maxNumberOfGhosts));
         // SpawnGhost(spawned);
     }
@@ -69,7 +74,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("End Game!");
-            Application.Quit();
         }
     }
 
@@ -84,12 +88,20 @@ public class GameManager : MonoBehaviour
 
     private void SpawnGhost()
     {
+        if (spawned == ghostsQuantity)
+        {
+            Application.Quit();
+        }
+        else
+        {
+            index = Random.Range(0, Anchors.Count);
+            Debug.Log(Anchors[index].name);
+        
+            Instantiate(ghostPrefab, Anchors[index].position, Anchors[index].rotation);
+            spawned++;
+            canSpawnProps = false;
+        }
         
         
-        index = Random.Range(0, Anchors.Count);
-        Debug.Log(Anchors[index].name);
-        
-        Instantiate(ghostPrefab, Anchors[index].position, Anchors[index].rotation);
-        canSpawnProps = false;
     }
 }

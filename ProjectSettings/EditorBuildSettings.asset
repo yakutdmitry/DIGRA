@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DIGRA/Scenes/Win Screen.unity
     guid: 011d9fbbd418bfd4781e901f1ab385dd
+  - enabled: 1
+    path: Assets/DIGRA/Scenes/Lose.unity
+    guid: 6f7142fddd3b70e48aca44b3c9623724
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

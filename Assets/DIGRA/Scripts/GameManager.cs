@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
         Destroy(ghost);
         canSpawn = true;
         canSpawnProps = true;
+        timer = 0f;
 
         if (spawned == ghostsQuantity)
         {
@@ -87,12 +88,19 @@ public class GameManager : MonoBehaviour
 
     private void SpawnGhost()
     {
-        
+        if (Anchors.Count != 0)
+        {
             index = Random.Range(0, Anchors.Count);
             // Debug.Log(Anchors[index].name);
         
             Instantiate(ghostPrefab, Anchors[index].position, Anchors[index].rotation);
             spawned++;
             canSpawn = false;
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneBuildIndex: 2);
+        }
+
     }
 }

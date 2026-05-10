@@ -229,18 +229,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 442527923647686185}
     m_Modifications:
     - target: {fileID: 3699761097230278303, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7374
-      objectReference: {fileID: 0}
-    - target: {fileID: 3699761097230278303, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.7374
-      objectReference: {fileID: 0}
-    - target: {fileID: 3699761097230278303, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.7374
-      objectReference: {fileID: 0}
-    - target: {fileID: 3699761097230278303, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -283,10 +271,6 @@ PrefabInstance:
     - target: {fileID: 4040821441955365925, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
       propertyPath: m_Name
       value: 3d-model
-      objectReference: {fileID: 0}
-    - target: {fileID: 4040821441955365925, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

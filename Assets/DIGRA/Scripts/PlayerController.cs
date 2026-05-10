@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
         if (deviceTimer >= deviceBattery)
         {
-            Application.Quit();
+            SceneManager.LoadScene(sceneBuildIndex: 3);
         }
     }
     
@@ -87,10 +88,10 @@ public class PlayerController : MonoBehaviour
             canShoot = false;
             shot.Play();
             Ray r = camera.ViewportPointToRay(new Vector3(0.5f, .5f, 0f));
+
+            int mask = 1 << 3;
         
-        
-        
-            if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance) && hit.collider.tag == "Ghost")
+            if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance, mask) && hit.collider.tag == "Ghost")
             { 
                 Debug.Log(hit.collider.name);
                 gameManager.DestroyGhost(hit.collider.gameObject);

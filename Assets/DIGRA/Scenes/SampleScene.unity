@@ -11970,7 +11970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993133041}
   - component: {fileID: 993133040}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Global Volume (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11990,7 +11990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
   m_IsGlobal: 1
-  priority: 6.98
+  priority: 4.86
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: dbac66afa5acc5940aee11a8047f2187, type: 2}
@@ -26760,7 +26760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3320190526780094610, guid: 4df2805ba93662f41873a3d822168376, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29611,6 +29611,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4317171541933036034, guid: 204acc76423fe584eb28ba7e66bfd359, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4774468736449725044, guid: 204acc76423fe584eb28ba7e66bfd359, type: 3}
       propertyPath: m_Enabled
       value: 0

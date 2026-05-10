@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float spawnCooldown;
     public GameObject ghostPrefab;
     public GameObject propsPrefab;
+    public ParticleSystem particles;
     
     
     [SerializeField] private List<Transform> Anchors;
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
     public void DestroyGhost(GameObject ghost)
     {
         Anchors.Remove(Anchors[index]);
+        Instantiate(particles, ghost.transform.position, ghost.transform.rotation);
         Destroy(ghost);
         canSpawn = true;
         canSpawnProps = true;

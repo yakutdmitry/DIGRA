@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     
     public float deviceBattery = 10;
     public float maxRayDistance;
+    public LayerMask ghostLayer;
     
     
     private Animator _animator;
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
             int mask = 1 << 3;
         
-            if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance, mask) && hit.transform.tag == "Ghost")
+            if (Physics.Raycast(r,out RaycastHit hit, maxRayDistance, ghostLayer) && hit.collider.tag == "Ghost")
             { 
                 Debug.Log(hit.transform.name);
                 gameManager.DestroyGhost(hit.transform.gameObject);

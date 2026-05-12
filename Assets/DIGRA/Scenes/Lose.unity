@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2162736236118713705, guid: d54554a3a41c63a45ad6eb338ea63ae6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1420034926}
+    - target: {fileID: 2162736236118713705, guid: d54554a3a41c63a45ad6eb338ea63ae6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
     - target: {fileID: 5431973538473322387, guid: d54554a3a41c63a45ad6eb338ea63ae6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -710,6 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fc4567499f44a4aa102fc295337ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIControls
+  waitTime: 3
   Buttons:
   - {fileID: 24814825}
   - {fileID: 348680447}

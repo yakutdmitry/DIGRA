@@ -9,6 +9,7 @@ public class GhostWalking : MonoBehaviour
 
     void Start()
     {
+        gameObject.layer = 3;
         agent = gameObject.GetComponent<NavMeshAgent>();
         GoToRandomPoint();
     }

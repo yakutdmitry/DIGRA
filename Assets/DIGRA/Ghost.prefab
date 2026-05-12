@@ -105,7 +105,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.95
+  m_Radius: 1.96
   m_Height: 7.08
   m_Direction: 1
   m_Center: {x: 0, y: 2.84, z: 0.43}
@@ -271,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 4040821441955365925, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
       propertyPath: m_Name
       value: 3d-model
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040821441955365925, guid: e7c84848126f0b1449b87e15f695e6ea, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
